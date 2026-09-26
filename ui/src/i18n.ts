@@ -109,14 +109,14 @@ const SEWAGE_WORDS: Record<"en" | "fr", Record<SewageStatus["state"], string>> =
 
 const SEWAGE_MESSAGES: Record<"en" | "fr", Table> = {
   en: {
-    ok: "There is room in the sewage tank.",
+    ok: "No pump-out needed yet.",
     sewage_full: "The sewage tank is full and can back up into the house. Use as little water as you can and call for a pump-out.",
     sewage_freezing: "The sewage tank is close to freezing. Check the tank heater and call for a pump-out.",
     sewage_filling: "The sewage tank will be full soon. Ask for a pump-out.",
     sewage_sensor_fault: "The sewage level sensor needs checking.",
   },
   fr: {
-    ok: "Il reste de la place dans le réservoir d'eaux usées.",
+    ok: "Pas besoin de vidange pour l'instant.",
     sewage_full: "Le réservoir d'eaux usées est plein et peut refouler dans la maison. Utilisez le moins d'eau possible et demandez une vidange.",
     sewage_freezing: "Le réservoir d'eaux usées risque de geler. Vérifiez le chauffage du réservoir et demandez une vidange.",
     sewage_filling: "Le réservoir d'eaux usées sera bientôt plein. Demandez une vidange.",
