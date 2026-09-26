@@ -1,0 +1,12 @@
+# TankLight runs offline. The graphflow framework (vendored in graphflow/) needs:
+langgraph>=1.0.0
+langchain-core>=1.0.0
+pydantic>=2.0.0
+typing-extensions>=4.5.0
+pyyaml>=6.0
+click>=8.0.0
+# Tests
+pytest>=8.0
+# Optional, for the water office plan (local AI). Without them it uses a baseline and a template.
+#   pip install "timesfm[mlx]"      # Apple silicon; downloads the TimesFM 3.0 weights on first use
+#   ollama pull gemma3:270m         # https://ollama.com
