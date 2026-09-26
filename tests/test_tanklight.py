@@ -330,6 +330,23 @@ def test_a_failed_tank_heater_in_january_warns_of_freezing(town):
     assert "sewage_freezing" not in town.snapshot()["featured"]["sewage"]["reasons"]
 
 
+def test_a_fresh_sewage_tank_is_empty_warm_and_heated_for_a_repeatable_demo(town):
+    town.heater_off()
+    town.advance(12.0)
+    town.fresh_sewage_tank()
+    home = town.featured_home()
+    assert home.sewage_l == 0.0 and home.heater_on and home.sewage_temp_c == simulate.HEATED_TANK_C
+    town.heater_off()
+    town.advance(6.0)
+    assert "sewage_freezing" in town.snapshot()["featured"]["sewage"]["reasons"]
+
+
+def test_the_sewage_label_is_translated():
+    i18n = (EXAMPLE / "ui" / "src" / "i18n.ts").read_text()
+    page = (EXAMPLE / "ui" / "index.html").read_text()
+    assert "Réservoir d'eaux usées (extérieur)" in i18n and 'id="sewage-label"' in page
+
+
 def test_pump_out_priority_sends_the_sewage_truck_to_full_and_freezing_tanks_first():
     homes = [
         {"home_id": "a", "people": 3, "sewage": rules.assess_sewage(200.0, 1000.0, 6.0, 200.0)},
@@ -433,6 +450,16 @@ def test_the_llm_note_is_used_only_when_every_fact_survives(office_town):
     assert invented["source"] == "template"
 
 
+def test_the_check_rejects_a_note_that_moves_homes_between_lists(office_town):
+    facts = office.plan_facts(office_town, [2.0] * 7)
+    facts["top_up_before_storm"], facts["pump_out_before_storm"] = ["home-01", "home-02"], ["home-03"]
+    template = office.template_note(facts)
+    swapped = template.replace("top up first: home-01, home-02", "top up first: home-03").replace(
+        "pump out first: home-03", "pump out first: home-01, home-02")
+    assert swapped != template and not office.faithful(swapped, template)
+    assert office.faithful("Hi all.\n\n" + template.replace("Blizzard:", "**Blizzard:**"), template)
+
+
 def test_a_writer_that_fails_falls_back_to_the_template(office_town):
     facts = office.plan_facts(office_town, [2.0] * 7)
 
@@ -503,6 +530,21 @@ def test_truck_plan_explains_a_low_water_warning_without_a_misleading_risk():
             "reasons": ["water_running_low"]}
     why = fleet.delivery_priority([home])[0]["why"]
     assert "0%" not in why and "day and a half" in why
+
+
+def test_trucks_go_by_days_of_water_not_by_tank_percent_or_a_stale_risk():
+    # From a real plan: homes with 3.6-4.2 days got trucks (risk from long past gaps) while a
+    # home at 70% full with 8 people, 2.1 days of water, was skipped as "full enough".
+    def home(home_id, level, days, risk, people, state="check"):
+        return {"home_id": home_id, "state": state, "level_pct": level, "days_left": days, "runout_risk": risk,
+                "people": people, "reasons": []}
+    homes = [home("h12", 76.0, 3.6, 0.5, 3), home("h06", 54.0, 4.2, 0.75, 2), home("h04", 55.0, 1.6, 0.0, 5),
+             home("h03", 62.0, 2.1, 0.0, 4), home("h05", 70.0, 2.1, 0.0, 8, "protected")]
+    plan = {p["home_id"]: p for p in fleet.delivery_priority(homes)}
+    assert plan["h12"]["can_skip"] and plan["h06"]["can_skip"]
+    assert not plan["h05"]["can_skip"] and not plan["h03"]["can_skip"]
+    order = [p["home_id"] for p in fleet.delivery_priority(homes) if not p["can_skip"]]
+    assert order == ["h04", "h05", "h03"]  # fewest days first, then the larger household
 
 
 def test_delivery_priority_puts_the_most_urgent_home_first():

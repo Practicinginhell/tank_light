@@ -1,7 +1,7 @@
 # TankLight: 3-minute pitch
 
-Script for Hack for Humanity Ottawa 2026. About 420 spoken words (around 150 a minute) plus
-three demo clicks, leaving time for pauses. Lines marked *(cut if short)* can go if a rehearsal runs over 3:00.
+Script for Hack for Humanity Ottawa 2026. About 330 spoken words: 2:15 at a calm 150 a minute, leaving about 40 seconds for clicks,
+the vitamin C moment and pauses. Lines marked *(cut if short)* go first if a rehearsal runs over 3:00.
 
 ## Before you go on stage
 
@@ -11,78 +11,68 @@ three demo clicks, leaving time for pauses. Lines marked *(cut if short)* can go
 - [ ] On the table: two jars of tap water and a vitamin C tablet (the prop for the vitamin C moment).
 - [ ] Backup: a terminal with `python app.py` already run (the same scenarios as text), and screenshots.
 - [ ] Confirm with Amenda that it's OK to mention the pipeline plan (it came from a draft resolution).
-- [ ] Rehearse once out loud with a timer.
+- [ ] Press "Make the office plan" once before going on: the first run loads TimesFM (about 10 seconds).
+- [ ] Rehearse twice out loud with a timer; aim for 2:50.
 
 ## Timing
 
 | Time | Section | On screen |
 |---|---|---|
-| 0:00–0:20 | Hook | Kitchen mode (the light alone) |
-| 0:20–0:50 | The problem | Kitchen mode |
-| 0:50–1:50 | Demo: three moments | "Show the demo", then tour steps 1, 6, 7 ("Show me") |
-| 1:50–2:30 | Both tanks, both trucks, the office AI | Tour steps 9 (sewage), 12 (truck plan), 13 (office plan) |
-| 2:30–2:50 | Different and honest | Tour step 15 |
-| 2:50–3:00 | Close | Kitchen mode |
+| 0:00–0:25 | Hook | Kitchen mode (the light alone) |
+| 0:25–0:50 | The problem | Kitchen mode |
+| 0:50–1:55 | Demo: four moments | "Show the demo", tour steps 1, 6, 7, 9 ("Show me") |
+| 1:55–2:35 | Trucks and the office AI | Tour step 13: press "Make the office plan" first |
+| 2:35–3:00 | Finding, honesty, close | Kitchen mode |
+
+Delivery: slow down on the numbers, and stop talking while the light changes. The silence is
+the demo.
 
 ## Script
 
 ### 0:00 Hook
-> In Inukjuak, a case of 24 water bottles costs seventy-six dollars.
-> There are no pipes under the ground: rock and permafrost. A truck brings treated water to a tank
-> inside the house, and another truck pumps the sewage tank outside. The water leaves the plant
-> safe. What happens in the tank, nobody can see.
+> Seventy-six dollars. That's what 24 bottles of water cost in Inukjuak.
+> There are no pipes here: rock and permafrost. A truck fills a tank inside each home, and another
+> pumps the sewage tank outside. The water leaves the plant safe. Then it sits in the tank, and
+> nobody can see what happens next.
 
-### 0:20 The problem
-> Stored water is protected by chlorine; the minimum is 0.2 milligrams per litre.
-> In Cambridge Bay, researchers found the truck water was fine, but many household tanks were low.
-> A Nunavut risk study scored household tanks "no barriers, no monitoring". In Kangiqsualujjuaq, a
-> third of households ran out of water in a single week. *(cut if short)* And this June, Inukjuak
-> was on a boil-water advisory.
+### 0:25 The problem
+> Chlorine is what keeps stored water safe. In Cambridge Bay, researchers found the trucks were
+> fine, but the tanks were low. A Nunavut study scored household tanks: "no barriers, no
+> monitoring". *(cut if short)* In Kangiqsualujjuaq, a third of homes ran out of water in one week.
 
-### 0:50 Demo: three moments
-> TankLight puts one light in the kitchen, readable from across the room.
+### 0:50 Demo: four moments
+> This is TankLight: a sensor at the tank, and one light at the kitchen tap, where you decide
+> whether to drink.
 
-**[Press "Show the demo", "Take the tour", then "Show me: Fill a nearly empty tank"]** Green, Protected.
-> Colour, shape, pulse and words, so it works without colour vision and without reading. Hours of
-> protection left, days of water, and the chance you run out before the truck.
+**[Press "Show the demo", "Take the tour", then "Show me: Fill a nearly empty tank"]** Green.
+> Green: protected. Colour, shape, pulse and words, so anyone can read it: hours of protection
+> left, days of water, and the chance you run out before the truck.
 
-**[Drop the vitamin C tablet in a jar. Next to step 6, "Show me: Add vitamin C"]** Red, Boil first.
-> Vitamin C removes chlorine. The light waits for two readings, so one noisy reading never
-> causes an alarm, and then says: boil first.
+**[Hold up the jar, drop in the vitamin C tablet. Next to step 6, "Show me: Add vitamin C"]** Red.
+> Vitamin C removes chlorine. *(pause)* Red: boil first.
 
-**[Next to step 7, "Show me: Pull the probe out"]** Grey, Needs service.
-> If a sensor fails, it goes grey. TankLight never shows green when it isn't sure.
-> In a blizzard it warns a day and a half before the water runs out. It all runs on the
-> device: offline, through the storm.
+**[Next to step 7, "Show me: Pull the probe out"]** Grey.
+> Pull the probe out: grey. TankLight never shows green when it isn't sure.
 
-### 1:50 Both tanks, both trucks
-**[Next to step 9: the sewage line]**
-> The sewage tank outside gets the same care: how full it is, and a freezing warning if the
-> heater fails in January.
+**[Next to step 9, "Show me: The tank heater fails in January"]** The sewage line turns red.
+> And the sewage tank outside: if its heater fails in January, it warns before it freezes.
 
-**[Next to step 12: truck plan]**
-> And the trucks. Instead of a fixed loop, trucks go where tanks are about to run dry and skip
-> the full ones. In our simulated July, with the same number of stops, homes went from 534 hours
-> without water to 188.
+### 1:55 Trucks and the office AI
+**[Next to step 13. Press "Make the office plan" now; it takes about 6 seconds]**
+> Now the trucks. Instead of a fixed loop, trucks go where tanks are about to run dry. In our
+> simulated July, with the same trucks, homes went from 534 hours without water to 195.
+> For the water office, AI runs on this laptop, offline. TimesFM forecasts next week's demand
+> around the blizzard, and a tiny language model writes the plan, but a check throws it out if a
+> single number changes.
+> AI plans the trucks. It never decides whether your water is safe.
 
-**[Next to step 13, press "Make the office plan" first: it takes about 6 seconds]**
-> For the water office, AI runs on this laptop, offline. Google's TimesFM forecasts next week's
-> demand with the blizzard forecast, and it's only used when it beats a simple guess. A tiny
-> language model writes the note, and a check rejects it if a single number changes.
-
-### 2:25 Different and honest
-**[Next to step 15]**
-> Our most important finding: in our simulation, truck chlorine fades below the minimum within a
-> day or two in most tanks. That's evidence for the health board: a higher truck dose, or
-> thresholds they set.
-> TankLight tracks chlorine, not E. coli; official advisories come first; and the Inuktitut
-> audio will be recorded with the community, not machine-translated.
-
-### 2:50 Close
+### 2:35 Finding, honesty, close
 **[Kitchen mode]**
-> Trucks today, pipes tomorrow: Inukjuak is already talking about a pipeline, and TankLight's
-> records can give that plan evidence.
-> TankLight: know your water is protected before you drink it. Thank you.
+> Our biggest finding: in simulation, truck chlorine fades below the minimum within a day or two
+> in most tanks. That's evidence the health board can act on.
+> It's simulated, it's not an E. coli test, and the Inuktitut audio will be recorded with the
+> community.
+> Trucks today, pipes tomorrow. TankLight: know your water is protected before you drink it.
 
 ## If the demo fails
 
@@ -96,7 +86,8 @@ Say "here's the same run from the device logic" and show the terminal output of
 | How do you measure chlorine cheaply? | An ORP and pH probe, calibrated against a DPD test kit (the one water operators already use). For a real pilot, a reagent-free amperometric sensor that works in still water. |
 | Does it detect E. coli? | No, and we say so. Pair it with a monthly field test that needs no electricity (Aquagenx CBT). TankLight covers the gap between those tests. |
 | Won't the light be red all the time? | In our simulation it's often not green (82–94% of the time), because truck chlorine fades fast in a tank. That's the finding, not a bug: it's evidence for a higher truck dose, or thresholds set with the health board. They decide the thresholds, not us, and a pilot must settle it first, because a light that is always red gets ignored. |
-| What about sewage? | The sewage tank outside has its own line on the display: how full, days until full, and a freezing warning if the tank heater fails. The sewage truck gets a pump-out plan; in simulation, 7–50% fewer hours with a full tank for the same stops. |
+| What about sewage? | The sewage tank outside has its own line on the display: how full, days until full, and a freezing warning if the tank heater fails. The sewage truck gets a pump-out plan; in simulation, 1–45% fewer hours with a full tank for the same stops. |
+| Where does it go in the house? | Two parts. The sensor unit sits at the indoor drinking-water tank: probes in the water line leaving the tank, a level sensor on top. The display goes on the wall beside the kitchen tap, at adult eye height, facing the room, connected by a short cable or low-power radio. The sewage sensor sits on the outdoor tank and shows as the second line on the display. Mains power with a battery for blizzard outages. We'd confirm the spot with families: wherever they actually get drinking water. |
 | What does it cost? | Prototype parts about $200–250 CAD; the target is under $100 at volume (an estimate). |
 | Who maintains it? | Standard parts, a swappable probe cartridge, and local "water keepers" doing a monthly check. Spares go on the fall sealift. |
 | Is the data real? | No, everything is simulated with placeholder numbers. Next step: real delivery logs and DPD readings with the municipality and KRG. |
@@ -112,5 +103,5 @@ Say "here's the same run from the device logic" and show the terminal output of
 - 33% ran out in a week, 37% don't drink tap water: [Kangiqsualujjuaq, J. Water & Health 2024](https://doi.org/10.2166/wh.2024.246).
 - Inukjuak advisory, E. coli at the loading arm: [Nunatsiaq News, June 2026](https://nunatsiaq.com/stories/article/inukjuak-under-boil-water-advisory-after-e-coli-detected-at-water-plant/).
 - SWOT: [York University Dahdaleh Institute](https://www.yorku.ca/dighr/project/safe-water-optimization-tool/).
-- 534 → 188 hours without water (July; January 1,486 → 1,286): TankLight backtest, **simulated**.
-- 7–50% fewer sewage-backup hours with priority pump-outs: **simulated**, 30 days, seeds 7 and 11, January and July.
+- 534 → 195 hours without water (July; January 1,486 → 1,282): TankLight backtest, **simulated**.
+- 1–45% fewer sewage-backup hours with priority pump-outs: **simulated**, 30 days, seeds 7 and 11, January and July.

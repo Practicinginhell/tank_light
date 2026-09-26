@@ -67,9 +67,10 @@ A fixed loop visits every house in turn, full or not. `fleet.delivery_priority` 
 tank's own forecast instead:
 
 1. **Tank nearly empty, or will run out before the next truck:** first.
-2. **Less than a day and a half of water, or a high run-out risk:** next.
+2. **Less than a day and a half of water, or a high run-out risk with under 3 days left:** next.
 3. **Chlorine low in a low tank:** a delivery replaces most of the water, so it restores protection.
-4. **Full enough:** skip today, which frees the stop for a home that needs it.
+4. **Full enough (3 or more days of water for this household):** skip today, which frees the stop
+   for a home that needs it. Days, not tank percent: 70% full lasts about 2 days for 8 people.
 5. **Chlorine gone or cloudy water in a full tank:** skip the truck. A top-up is mostly old water
    and can't fix it (the demo shows this), so the plan asks the water office to check the tank.
 
@@ -77,12 +78,12 @@ Backtest (`python app.py backtest`), same town, same storms, same number of stop
 
 | Season | Fixed loop: hours homes had no water | Priority | L per stop, fixed → priority |
 |---|---|---|---|
-| January (storms 15% of days) | 1,486 | 1,286 | 833 → 868 |
-| July | 534 | 188 | 792 → 828 |
+| January (storms 15% of days) | 1,486 | 1,282 | 833 → 861 |
+| July | 534 | 195 | 792 → 826 |
 
 The sewage truck (4 stops a day) gets the same treatment. Over 30 days, with the same number of
-pump-outs, priority cut the hours homes had a full sewage tank by 7–50% (seeds 7 and 11,
-January and July; for example July seed 7: 434 → 220).
+pump-outs, priority cut the hours homes had a full sewage tank by 1–45% (seeds 7 and 11,
+January and July; for example July seed 7: 434 → 240).
 
 In both, every run-out was warned at least 24 h ahead. Counting run-out *events* is misleading
 when trucks are short (every home runs dry sometimes); **hours without water** is what dispatch

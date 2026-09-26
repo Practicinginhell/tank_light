@@ -100,9 +100,27 @@ def _tokens(text: str) -> tuple[set[str], set[str]]:
     return homes, numbers
 
 
+# The action a line asks for. Lines that name homes must keep their action, so "top up
+# home-01" can't become "pump out home-01". A note that rewords the action is rejected (safe).
+ACTIONS = ("top up", "pump out", "tank check", "run short", "fill up")
+
+
+def _line_key(line: str) -> tuple:
+    text = line.lower()
+    return (next((a for a in ACTIONS if a in text), None), *_tokens(line))
+
+
 def faithful(note: str, template: str) -> bool:
-    """True when `note` names exactly the same homes and numbers as `template`."""
-    return _tokens(note) == _tokens(template)
+    """True when `note` names exactly the same homes and numbers as `template`, line by line.
+
+    Each template line's homes, numbers and action must appear together on one line of the note,
+    so a note that moves a home from the top-up list to the pump-out list is rejected. Merged or split
+    lines are rejected too; the template goes out instead, which is always safe.
+    """
+    if _tokens(note) != _tokens(template):
+        return False
+    note_lines = [_line_key(line) for line in note.splitlines()]
+    return all(_line_key(line) in note_lines for line in template.splitlines() if any(_tokens(line)))
 
 
 def ollama_writer(model: str = DEFAULT_LLM, timeout: float = 60.0) -> Writer:

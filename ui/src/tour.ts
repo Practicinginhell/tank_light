@@ -82,7 +82,7 @@ export const STEPS: TourStep[] = [
       "full it is, when it will be full, and its temperature. If the tank heater fails in January, it warns of " +
       "freezing before the tank can't be pumped. It is separate from the water light: a full sewage tank is " +
       "urgent, but it doesn't make the drinking water unsafe.",
-    show: { label: "The tank heater fails in January", actions: [{ action: "pump_out_now" }, { action: "heater_off" },
+    show: { label: "The tank heater fails in January", actions: [{ action: "fresh_sewage_tank" }, { action: "heater_off" },
       { action: "advance", hours: 6 }, { action: "heater_on" }] },
   },
   {

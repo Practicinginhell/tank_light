@@ -41,7 +41,7 @@ function render(): void {
   renderDevice(device, snap, lang);
   renderChart(byId<SVGSVGElement>("chart"), byId<SVGDescElement>("chart-desc"), snap.featured.timeline);
   renderFleet(byId<HTMLTableSectionElement>("fleet"), byId("fleet-stats"), byId("policy-label"), snap, lang);
-  renderSewage(byId("sewage"), byId("sewage-word"), byId("sewage-message"), byId("sewage-details"), snap, lang);
+  renderSewage(byId("sewage"), byId("sewage-label"), byId("sewage-word"), byId("sewage-message"), byId("sewage-details"), snap, lang);
   renderPumpOuts(byId<HTMLTableSectionElement>("pump-outs"), snap);
   byId<HTMLElement>("pump-label").textContent = `· ${snap.pump_outs_per_day} stops a day`;
   byId<HTMLElement>("pump-stats").textContent = `Since the demo started: ${snap.stats.sewage_backup_hours} ` +

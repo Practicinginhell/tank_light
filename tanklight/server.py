@@ -65,7 +65,8 @@ class DemoState:
         action, town = body.get("action"), self.community
         simple = {"deliver_now": town.deliver_now, "vitamin_c": town.vitamin_c, "make_murky": town.make_murky,
                   "pull_probe": town.pull_probe, "attach_probe": town.attach_probe,
-                  "pump_out_now": town.pump_out_now, "heater_off": town.heater_off, "heater_on": town.heater_on}
+                  "pump_out_now": town.pump_out_now,
+                  "fresh_sewage_tank": town.fresh_sewage_tank, "heater_off": town.heater_off, "heater_on": town.heater_on}
         if action in simple:
             simple[action]()
         elif action == "advance":

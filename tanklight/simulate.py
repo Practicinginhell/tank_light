@@ -334,6 +334,12 @@ class Community:
     def pump_out_now(self) -> None:
         self._pump_out(0)
 
+    def fresh_sewage_tank(self) -> None:
+        """Demo setup: the featured sewage tank just pumped out, warm, heater on (repeatable demos)."""
+        self._pump_out(0)
+        home = self.homes[0]
+        home.heater_on, home.sewage_temp_c = True, HEATED_TANK_C
+
     def heater_off(self) -> None:
         """Demo: the sewage tank's heater fails (in January the tank starts to freeze)."""
         self.homes[0].heater_on = False

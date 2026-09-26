@@ -2,15 +2,16 @@
 // display, and the sewage truck's pump-out plan. Kept apart from the drinking-water light:
 // a full sewage tank is urgent, but it doesn't make the drinking water unsafe.
 
-import { sewageDetails, sewageMessage, sewageWord } from "./i18n.js";
+import { sewageDetails, sewageMessage, sewageTitle, sewageWord } from "./i18n.js";
 import type { Lang, SewageStatus, Snapshot } from "./types.js";
 
 // Reuse the four light colours: ok → green, soon → amber, urgent → red, service → grey.
 const LIGHT: Record<SewageStatus["state"], string> = { ok: "protected", soon: "check", urgent: "boil", service: "service" };
 
-export function renderSewage(box: HTMLElement, word: HTMLElement, text: HTMLElement, details: HTMLElement,
-                             snap: Snapshot, lang: Lang): void {
+export function renderSewage(box: HTMLElement, label: HTMLElement, word: HTMLElement, text: HTMLElement,
+                             details: HTMLElement, snap: Snapshot, lang: Lang): void {
   const sewage = snap.featured.sewage;
+  label.textContent = sewageTitle(lang);
   box.dataset.state = LIGHT[sewage.state];
   word.textContent = sewageWord(sewage.state, lang);
   text.textContent = sewageMessage(sewage, lang);

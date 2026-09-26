@@ -9,7 +9,12 @@ from __future__ import annotations
 
 import math
 
-SKIP_LEVEL_PCT = 50.0
+SKIP_LEVEL_PCT = 50.0  # used only when the device doesn't know the household's use yet
+# A tank is "full enough" by days of water, not by percent: 70% lasts 2 days for 8 people.
+SKIP_DAYS = 3.0
+# Run-out risk comes from past delivery gaps, which run long for homes the plan skipped before;
+# it only makes a home urgent when the water is also short.
+RISK_MATTERS_BELOW_DAYS = 3.0
 # A top-up only restores chlorine when most of the tank becomes new water.
 TOP_UP_HELPS_BELOW_PCT = 60.0
 
@@ -18,9 +23,10 @@ def _tier(home: dict) -> tuple[int, str, bool]:
     """(tier, why, can_skip) for one home."""
     reasons, risk = home.get("reasons") or [], home.get("runout_risk") or 0.0
     days_left, level = home.get("days_left"), home.get("level_pct")
-    if "tank_nearly_empty" in reasons or risk >= 0.9 or (days_left is not None and days_left < 0.5):
+    short = days_left is None or days_left < RISK_MATTERS_BELOW_DAYS
+    if "tank_nearly_empty" in reasons or (risk >= 0.9 and short) or (days_left is not None and days_left < 0.5):
         return 0, "Tank nearly empty or will run out before the next truck", False
-    if risk >= 0.5:
+    if risk >= 0.5 and short:
         return 1, f"May run out before the next truck (risk {risk:.0%})", False
     if "water_running_low" in reasons:
         return 1, "Less than a day and a half of water left", False
@@ -31,7 +37,8 @@ def _tier(home: dict) -> tuple[int, str, bool]:
         return 3, "No chlorine protection but tank full: a top-up won't fix it; ask the water office to check the tank", True
     if "water_cloudy" in reasons:
         return 3, "Cloudy water: a top-up won't clear it; ask the water office to check the tank", True
-    if level is not None and level >= SKIP_LEVEL_PCT:
+    full_enough = days_left >= SKIP_DAYS if days_left is not None else level is not None and level >= SKIP_LEVEL_PCT
+    if full_enough:
         return 3, "Full enough: skip today", True
     return 3, "Routine top-up", False
 

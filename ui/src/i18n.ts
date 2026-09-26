@@ -124,6 +124,10 @@ const SEWAGE_MESSAGES: Record<"en" | "fr", Table> = {
   },
 };
 
+export function sewageTitle(lang: Lang): string {
+  return textLang(lang) === "fr" ? "Réservoir d'eaux usées (extérieur)" : "Sewage tank (outside)";
+}
+
 export function sewageWord(state: SewageStatus["state"], lang: Lang): string {
   return SEWAGE_WORDS[textLang(lang)][state];
 }
