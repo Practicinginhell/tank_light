@@ -39,7 +39,7 @@ python app.py serve               # builds the TypeScript UI (Node >= 22.13), op
 ```
 
 In the UI, **Kitchen mode** (or `/?kitchen`) shows only what the family sees. **Take the tour** (or open `/?tour`) walks through every part, and each step's
-"Show me" runs that part's demo. The 3-minute pitch built on it is in [PITCH.md](PITCH.md).
+"Show me" runs that part's demo. The 3-minute pitch built on it is in [PITCH.md](PITCH.md). Answers to judge questions are in [QA.md](QA.md).
 
 `serve` needs Node.js 22.13 or newer and no npm packages: `ui/build.mjs` uses Node's built-in
 type stripping. It does not type-check; add the `typescript` package and run `tsc --noEmit`

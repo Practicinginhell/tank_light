@@ -81,6 +81,8 @@ Say "here's the same run from the device logic" and show the terminal output of
 
 ## Likely judge questions
 
+The most likely ones are below. The full set, grouped by topic, is in [QA.md](QA.md).
+
 | Question | Answer |
 |---|---|
 | How do you measure chlorine cheaply? | An ORP and pH probe, calibrated against a DPD test kit (the one water operators already use). For a real pilot, a reagent-free amperometric sensor that works in still water. |
